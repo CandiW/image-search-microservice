@@ -1,9 +1,10 @@
 'use strict';
 
-module.exports = function(url,app,db){
+module.exports = function(app,db){
+
 
     app.get('/images/recent',function(req,res){
-            
+        
         let array = [];
         let collection = db.collection('images');
         let findRecent = collection.find().sort({ _id: 0 }).limit(15);
@@ -17,7 +18,7 @@ module.exports = function(url,app,db){
                 array.push(mostRecent);
 
                 res.send(array);
-            
+                db.close();
         });
 
         });

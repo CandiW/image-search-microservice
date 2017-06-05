@@ -1,10 +1,8 @@
 'use strict';
 
-module.exports = function(url,app){
+module.exports = function(app,db){
 
     let request = require('request');
-    let mongodb = require('mongodb').MongoClient;
-    const myRequest2 = require('./request2.js');
 
 let array = [];
 
@@ -22,8 +20,6 @@ function createResponse(body,object){
         array.push(image);
     }
 
-mongodb.connect(url,function(err,db){
-if(err){console.log(err);}
 let collection = db.collection('images');
 
     collection.insert(object,function(err,result){
@@ -31,10 +27,8 @@ let collection = db.collection('images');
         else {
             console.log(result);
         }
-        myRequest2(url,app,db);
     });
-db.close();
-});
+        db.close();
 
 
 }

@@ -1,9 +1,11 @@
 'use strict';
 
-module.exports = function(app,db){
+module.exports = function(url,app){
+
+let mongodb = require('mongodb').MongoClient;
 
     app.get('/images/recent',function(req,res){
-        
+        mongodb.connect(url,function(err,db){
         let array = [];
         let collection = db.collection('images');
         let findRecent = collection.find().sort({ _id: 0 }).limit(15);
@@ -15,9 +17,9 @@ module.exports = function(app,db){
                 };
 
                 array.push(mostRecent);
-
                 res.send(array);
-            
+                db.close();
+        });
         });
 
         });

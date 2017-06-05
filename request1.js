@@ -20,14 +20,9 @@ function createResponse(body,object){
         array.push(image);
     }
 mongodb.connect(url,function(err,db){
-let collection = db.collection('images');
 
-    collection.insert(object,function(err,result){
-        if(err){console.log(err);}
-        else {
-            console.log(result);
-        }
-    });
+    let collection = db.collection('images');
+    collection.insert(object);
     db.close();
 });
         
@@ -57,18 +52,19 @@ let collection = db.collection('images');
             timeout: 10000
         }, function(error, response, body) {
             if(error){console.log(error);}
-            else {
+            
                 let resObject = {
                     search_term: q,
                     date: new Date()
                 }
 
                 createResponse(body,resObject);
-
-            }
+            
         });
+
         res.send(array);
         array = [];
+
     });
 
     

@@ -22,7 +22,8 @@ function search(port){
     mongodb.connect(mLab,function(err,db){
         myRequest1(app,db);
         myRequest2(app,db);
-    })
+        db.close();
+    });
 
     app.listen(port);
 

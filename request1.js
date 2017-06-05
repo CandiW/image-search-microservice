@@ -28,9 +28,7 @@ let collection = db.collection('images');
             console.log(result);
         }
     });
-        db.close();
-
-
+        
 }
 
     app.get('/search/:query',function(req,res){

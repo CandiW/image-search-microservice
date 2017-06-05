@@ -18,7 +18,7 @@ module.exports = function(app,db){
                 array.push(mostRecent);
 
                 res.send(array);
-                db.close();
+            
         });
 
         });

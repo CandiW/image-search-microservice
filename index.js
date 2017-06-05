@@ -20,7 +20,7 @@ function search(port){
     app.use(bodyparser.urlencoded({extended: false}));
     
     mongodb.connect(mLab,function(err,db){
-        myRequest1(app,db);
+        myRequest1(mLab,app);
         myRequest2(app,db);
         db.close();
     });

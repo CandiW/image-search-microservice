@@ -2,7 +2,6 @@
 
 module.exports = function(app,db){
 
-
     app.get('/images/recent',function(req,res){
         
         let array = [];

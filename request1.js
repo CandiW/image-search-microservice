@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(app,db){
-
+module.exports = function(url,app){
+    let mongodb=require('mongodb').MongoClient;
     let request = require('request');
 
 let array = [];
@@ -19,7 +19,7 @@ function createResponse(body,object){
         }
         array.push(image);
     }
-
+mongodb.connect(url,function(err,db){
 let collection = db.collection('images');
 
     collection.insert(object,function(err,result){
@@ -28,6 +28,8 @@ let collection = db.collection('images');
             console.log(result);
         }
     });
+    db.close();
+});
         
 }
 

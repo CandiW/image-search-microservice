@@ -1,0 +1,13 @@
+body {
+    font-family: 'Bad Script', cursive;
+    background-image: -webkit-gradient(linear, left top, left bottom, from (white), to(lightseagreen));
+    background-image: -webkit-linear-gradient(top, white, lightseagreen);
+    background-image: -moz-linear-gradient(top, white, lightseagreen);
+    background-image: linear-gradient(to bottom, white, lightseagreen);
+    text-align: center;
+    padding: 30px 0px 0px 0px;
+}
+
+#links {
+    color: lightslategray;
+}

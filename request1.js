@@ -72,6 +72,7 @@ db.close();
             }
         });
         res.send(array);
+        array = [];
     });
 
     

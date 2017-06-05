@@ -37,9 +37,9 @@ db.close();
 
 }
 
-    app.get('/images/:value(*)',function(req,res){
+    app.get('/images/:query(*)',function(req,res){
 
-        let q = req.params.value;
+        let q = req.params.query;
         let offset = req.query.offset;
 
         let url = "";

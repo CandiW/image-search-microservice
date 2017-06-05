@@ -22,10 +22,8 @@ module.exports = function(url,app){
 
                 array.push(mostRecent);
 
-                if(array.length <= 10){
-                    res.send(array);
-                }
-
+                res.send(array);
+            
         });
 
         });

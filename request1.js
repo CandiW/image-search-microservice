@@ -45,7 +45,7 @@ function createResponse(body){
     
         else {
 
-            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + query;
+            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + query + '&start=1';
 
         }
 
@@ -63,6 +63,7 @@ function createResponse(body){
 
                 createCollection(db,resObject);
                 createResponse(body);
+                console.log(body.length);
                 console.log(body);
             }
         });

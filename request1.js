@@ -1,12 +1,13 @@
 'use strict';
 
-module.exports = function(app,db){
+module.exports = function(url,app){
 
     let request = require('request');
+    let mongodb = require('mongodb').MongoClient;
 
 let array = [];
 
-function createResponse(body,db,object){
+function createResponse(body,object){
     let parsedBody = JSON.parse(body);
     let imageList = parsedBody.items;
 
@@ -20,13 +21,18 @@ function createResponse(body,db,object){
         array.push(image);
     }
 
+mongodb.connect(url,function(err,db){
+if(err){console.log(err);}
 let collection = db.collection('images');
+
     collection.insert(object,function(err,result){
         if(err){console.log(err);}
         else {
             console.log(result);
         }
     });
+db.close();
+});
 
 
 }
@@ -61,7 +67,7 @@ let collection = db.collection('images');
                     date: new Date()
                 }
 
-                createResponse(body,db,resObject);
+                createResponse(body,resObject);
 
             }
         });

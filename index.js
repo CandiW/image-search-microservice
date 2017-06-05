@@ -1,5 +1,4 @@
 const express = require('express');
-const mongodb = require('mongodb').MongoClient;
 const path = require('path');
 const dotenv = require('dotenv').config({path: "./.env"});
 const myRequest1 = require("./request1.js"); 
@@ -18,13 +17,8 @@ function search(port){
 
     app.use(bodyparser.urlencoded({extended: false}));
 
-    mongodb.connect(mLab,function(err,db){
-        if(err){console.log("Error: " + err);}
-        console.log("connected on " + port);
-        myRequest1(app,db);
-        myRequest2(app,db);
-        db.close();                               
-    });
+        myRequest1(mLab,app);
+        myRequest2(mLab,app);
 
     app.listen(port);
 

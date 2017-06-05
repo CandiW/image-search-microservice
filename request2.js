@@ -1,8 +1,13 @@
 'use strict';
 
-module.exports = function(app,db){
+module.exports = function(url,app){
+
+    const mongodb = require('mongodb').MongoClient;
 
     app.get('/images/recent',function(req,res){
+        mongodb.connect(url,function(err,db){
+
+            if(err){console.log(err);}
 
         let array = [];
         let collection = db.collection('images');
@@ -20,6 +25,8 @@ module.exports = function(app,db){
                 if(array.length <= 10){
                     res.send(array);
                 }
+
+        });
 
         });
 

@@ -33,7 +33,7 @@ let collection = db.collection('images');
 
 }
 
-    app.get('/images/:query',function(req,res){
+    app.get('/search/:query',function(req,res){
 
         let q = req.params.query;
         let offset = req.query.offset;

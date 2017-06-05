@@ -63,7 +63,7 @@ db.close();
             if(error){console.log(error);}
             else {
                 let resObject = {
-                    search_term: query,
+                    search_term: q,
                     date: new Date()
                 }
 

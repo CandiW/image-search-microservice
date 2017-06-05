@@ -12,7 +12,7 @@ module.exports = function(url,app){
         let array = [];
         let collection = db.collection('images');
 
-        let findRecent = collection.find().sort({ _id: 0 }).limit(10);
+        let findRecent = collection.find().sort({ _id: 0 });
 
         findRecent.map(function(el){
             let mostRecent = {

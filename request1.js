@@ -4,19 +4,9 @@ module.exports = function(app,db){
 
     let request = require('request');
 
-function createCollection(db,response){
-    let collection = db.collection('images');
-    collection.insert(response,function(err,result){
-        if(err){console.log(err);}
-        else {
-            console.log("Inserted collection...");
-        }
-    });
-}
-
 let array = [];
 
-function createResponse(body){
+function createResponse(body,db,object){
     let parsedBody = JSON.parse(body);
     let imageList = parsedBody.items;
 
@@ -29,6 +19,16 @@ function createResponse(body){
         }
         array.push(image);
     }
+
+let collection = db.collection('images');
+    collection.insert(object,function(err,result){
+        if(err){console.log(err);}
+        else {
+            console.log(result);
+        }
+    });
+
+
 }
 
     app.get('/images/:value(*)',function(req,res){
@@ -61,10 +61,8 @@ function createResponse(body){
                     date: new Date()
                 }
 
-                createCollection(db,resObject);
-                createResponse(body);
-                console.log(body.length);
-                console.log(body);
+                createResponse(body,db,resObject);
+
             }
         });
         res.send(array);

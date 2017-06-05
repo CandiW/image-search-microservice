@@ -10,9 +10,8 @@ module.exports = function(url,app){
             if(err){console.log(err);}
 
         let array = [];
-        let collection = db.collection('images');
 
-        let findRecent = collection.find().sort({ _id: 0 });
+        let findRecent = db.collection.find().sort({ _id: 0 });
 
         findRecent.map(function(el){
             let mostRecent = {

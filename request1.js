@@ -39,19 +39,19 @@ db.close();
 
     app.get('/images/:value(*)',function(req,res){
 
-        let query = req.params.value;
-        let offset = req.params.offset;
+        let q = req.params.value;
+        let offset = req.query.offset;
 
         let url = "";
 
         if(offset){
             //if there is an offset
-            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + query + '&start=' + offset;
+            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q + '&start=' + offset;
         } 
     
         else {
 
-            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + query + '&start=1';
+            url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q;
 
         }
 

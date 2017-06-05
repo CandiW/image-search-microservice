@@ -4,6 +4,7 @@ module.exports = function(url,app){
 
     let request = require('request');
     let mongodb = require('mongodb').MongoClient;
+    const myRequest2 = require('./request2.js');
 
 let array = [];
 
@@ -30,6 +31,7 @@ let collection = db.collection('images');
         else {
             console.log(result);
         }
+        myRequest2(url,app,db);
     });
 db.close();
 });

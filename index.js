@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv').config({path: "./.env"});
 const myRequest1 = require("./request1.js"); 
-const myRequest2 = require('./request2.js');
 const bodyparser = require('body-parser');
 let app = express();
 let mLab = "mongodb://herokumecw:herokume@ds163721.mlab.com:63721/image-search-microservice";
@@ -19,7 +18,6 @@ function search(port){
     app.use(bodyparser.urlencoded({extended: false}));
 
         myRequest1(mLab,app);
-        myRequest2(mLab,app);
 
     app.listen(port);
 

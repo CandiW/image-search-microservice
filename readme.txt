@@ -1,3 +1,3 @@
 For Free Code Camp Backend API Challenges
-Project 4: Image Search
-(started 5/25/2017, finished: 6/5/2017)
+Project 4: Image Search Abstraction Layer Microservice
+(started 5/25/2017, finished: 6/6/2017)

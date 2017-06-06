@@ -8,6 +8,10 @@ body {
     padding: 30px 0px 0px 0px;
 }
 
+.fa-free-code-camp {
+    color: green;
+}
+
 #links {
     color: lightslategray;
 }

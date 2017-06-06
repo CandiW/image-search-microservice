@@ -28,7 +28,7 @@ mongodb.connect(url,function(err,db){
         
 }
 
-    app.get('/search/:query',function(req,res){
+    app.get('/search/:query(*)',function(req,res){
 
         let q = req.params.query;
         let offset = req.query.offset;
@@ -60,11 +60,9 @@ mongodb.connect(url,function(err,db){
 
                 createResponse(body,resObject);
             
+            res.send(array);
+            array = [];
         });
-
-        res.send(array);
-        array = [];
-
     });
 
     

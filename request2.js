@@ -2,26 +2,29 @@
 
 module.exports = function(url,app){
 
-let mongodb = require('mongodb').MongoClient;
+const mongodb = require('mongodb').MongoClient;
 
-    app.get('/images/recent',function(req,res){
-        mongodb.connect(url,function(err,db){
-        let array = [];
-        let collection = db.collection('images');
-        let findRecent = collection.find().sort({ _id: 0 }).limit(15);
+let response;
 
-        findRecent.map(function(el){
-            let mostRecent = {
-                    search_term: el.search_term,
-                    date: el.date
-                };
+function findRecents(){
 
-                array.push(mostRecent);
-                res.send(array);
-                db.close();
-        });
-        });
+    mongodb.connect(url,function(err,db){
+    if(err){console.log(err);}
+    let collection = db.collection('images');
+    collection.find().toArray(function(err,doc){
+        response = doc;
+        return response;
+    });
+    db.close();
+});
+    
+app.get('/images/recent',function(req,resp){
+    resp.send(response);
+});
 
-        });
+
+}
+
+findRecents();
 
 }

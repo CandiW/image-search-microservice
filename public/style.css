@@ -12,6 +12,14 @@ body {
     color: green;
 }
 
+p {
+    color: green;
+}
+
 #links {
+    color: lightslategray;
+}
+
+#stories {
     color: lightslategray;
 }
